@@ -7,12 +7,12 @@ const wordSearch = (letters, word) => {
   }
   const horizontalJoin = letters.map((ls) => ls.join("")); // defines new array of joined letters from the 'letters' array.
   for (l of horizontalJoin) {
-    counter++;
+    counter++; // starts counter
 
     if (l.includes(word)) {
       return true;
     } else if (horizontalJoin.length === counter) {
-      const newLetters = transpose(horizontalJoin);
+      const newLetters = transpose(horizontalJoin); // if no word found, transpose array and try again
 
       const newhorizontalJoin = newLetters.map((ls) => ls.join(""));
 
