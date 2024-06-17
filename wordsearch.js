@@ -5,29 +5,19 @@ const wordSearch = (letters, word) => {
     // if array is empty return false
     return false;
   }
-  const horizontalJoin = letters.map((ls) => ls.join("")); // defines new array of joined letters from the 'letters' array.
-  for (l of horizontalJoin) {
-    counter++; // starts counter
+  const horizontalJoin = letters.map((ls) => ls.join("")); // new array of words from the letters array joined horizontally
 
-    if (l.includes(word)) {
-      return true;
-    } else if (horizontalJoin.length === counter) {
-      const newLetters = transpose(horizontalJoin); // if no word found, transpose array and try again
+  const verticalJoin = transpose(letters).map((ls) => ls.join("")); // new array of words from the letters array joined vertically
 
-      const newhorizontalJoin = newLetters.map((ls) => ls.join(""));
-
-      counter = 0;
-      for (l of newhorizontalJoin) {
-        counter++;
-
-        if (l.includes(word)) {
-          return true;
-        } else if (newhorizontalJoin.length === counter) {
-          return false;
-        }
-      }
+  const checkWord = (joinedLetters) => {
+    // function that does the looping and returns true if a match is found, false if not found
+    for (let l of joinedLetters) {
+      if (l.includes(word)) return true;
     }
-  }
+    return false;
+  };
+
+  return checkWord(horizontalJoin) || checkWord(verticalJoin); // returns true if the word is present in either passthrough, false if not
 };
 
 const transpose = function (matrix) {
