@@ -66,4 +66,22 @@ describe("#wordSearch()", function () {
 
     assert.isFalse(result);
   });
+
+  it("should return true if the word is present", function () {
+    const result = wordSearch(
+      [
+        ["L", "A", "U", "Q", "F", "K", "Z", "E"],
+        ["S", "A", "U", "K", "A", "C", "D", "O"],
+        ["I", "A", "P", "A", "W", "T", "B", "U"],
+        ["B", "Y", "E", "N", "E", "R", "F", "B"],
+        ["L", "R", "E", "Y", "S", "C", "H", "W"],
+        ["G", "R", "V", "E", "T", "J", "M", "H"],
+        ["L", "A", "U", "Q", "F", "C", "F", "Y"],
+        ["D", "L", "E", "F", "N", "I", "E", "S"],
+        ["L", "A", "U", "Q", "F", "C", "W", "A"],
+      ],
+      "SEINFELD"
+    );
+    assert.isTrue(result);
+  });
 });
